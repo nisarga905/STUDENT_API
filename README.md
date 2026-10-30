@@ -1,17 +1,17 @@
 # Student and Library API
 
-A backend-only FastAPI application for managing student records and library operations in memory.
+A backend-only FastAPI application for managing student and library records in memory.
 
 ## Project structure
 
 ```text
 app/
-  api/routes/            Student, book, member, and loan endpoints
+  api/routes/            Student and library endpoints
   models/                In-memory entity models
   schemas/               Request and response validation
   services/              In-memory storage and operations
-  main.py                FastAPI application
-tests/                   API tests
+  main.py                 FastAPI application
+tests/                    API tests
 ```
 
 The data is stored in memory and resets when the application restarts.
@@ -54,17 +54,15 @@ Interactive documentation is available at:
 | GET | `/api/students` | View all students |
 | GET | `/api/students/{id}` | View a student by ID |
 | DELETE | `/api/students/{id}` | Delete a student |
-
-### Library endpoints
-
-| Method | URL | Purpose |
-|---|---|---|
-| POST, GET | `/api/books` | Create or list books |
-| GET, PUT, DELETE | `/api/books/{id}` | Manage one book |
-| POST, GET | `/api/members` | Create or list library members |
-| GET, PUT, DELETE | `/api/members/{id}` | Manage one member |
-| POST, GET | `/api/loans` | Issue or list book loans |
-| POST | `/api/loans/{id}/return` | Return an issued book |
+| POST | `/api/library/books` | Add a book |
+| GET | `/api/library/books` | View books |
+| POST | `/api/library/loans` | Borrow a book |
+| POST | `/api/library/loans/{id}/return` | Return a borrowed book |
+| GET | `/api/library/students/{student_id}/loans` | View a student's borrowing history |
+| GET | `/api/library/loans/overdue` | View overdue loans and fines |
+| POST | `/api/library/reservations` | Reserve a book |
+| GET | `/api/library/reservations` | View reservations |
+| DELETE | `/api/library/reservations/{id}` | Cancel a reservation |
 
 Example student JSON:
 
