@@ -1,17 +1,17 @@
-# Student API
+# Student and Library API
 
-A backend-only FastAPI application for managing student records in memory.
+A backend-only FastAPI application for managing student records and library operations in memory.
 
 ## Project structure
 
 ```text
 app/
-  api/routes/students.py  API endpoints
-  models/student.py       In-memory student entity
-  schemas/student.py      Request and response validation
-  services/              Student storage and operations
-  main.py                 FastAPI application
-tests/                    API tests
+  api/routes/            Student, book, member, and loan endpoints
+  models/                In-memory entity models
+  schemas/               Request and response validation
+  services/              In-memory storage and operations
+  main.py                FastAPI application
+tests/                   API tests
 ```
 
 The data is stored in memory and resets when the application restarts.
@@ -54,6 +54,17 @@ Interactive documentation is available at:
 | GET | `/api/students` | View all students |
 | GET | `/api/students/{id}` | View a student by ID |
 | DELETE | `/api/students/{id}` | Delete a student |
+
+### Library endpoints
+
+| Method | URL | Purpose |
+|---|---|---|
+| POST, GET | `/api/books` | Create or list books |
+| GET, PUT, DELETE | `/api/books/{id}` | Manage one book |
+| POST, GET | `/api/members` | Create or list library members |
+| GET, PUT, DELETE | `/api/members/{id}` | Manage one member |
+| POST, GET | `/api/loans` | Issue or list book loans |
+| POST | `/api/loans/{id}/return` | Return an issued book |
 
 Example student JSON:
 
